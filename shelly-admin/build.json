@@ -5,3 +5,4 @@
     "aarch64": "snowzach/doods:arm64",
     "amd64": "snowzach/doods:noavx"
   }
+}
