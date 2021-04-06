@@ -23,5 +23,6 @@ jobs:
         uses: home-assistant/builder@2021.03.4
         with:
           args: |
+            --test \
             --all \
             --target /data/shelly-admin
