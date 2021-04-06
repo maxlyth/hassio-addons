@@ -1,35 +1,35 @@
 {
   "name": "Shelly Admin",
-  "version": "8.2.1",
+  "version": "dev",
   "slug": "shelly-admin",
   "description": "Admin console for Shelly IoT devices",
   "url": "https://github.com/maxlyth/shelly-admin-express",
-  "arch": [
-    "aarch64",
-    "amd64",
-    "armhf",
-    "armv7",
-    "i386"
+  "advanced": true,
+  "ingress": true,
+  "ingress_port": 4081,
+  "startup": "services",
+  "panel_icon": "mdi:docker",
+  "homeassistant": "0.92.0b2",
+  "arch": ["aarch64", "amd64", "armhf", "armv7"],
+  "init": false,
+  "map": [
+    "config:rw",
   ],
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
-    "4080/tcp": 3000
+    "4081/tcp": 3000
   },
   "ports_description": {
-    "4080/tcp": "Web interface"
+    "4081/tcp": "Web interface"
   },
   "hassio_api": true,
   "hassio_role": "manager",
   "homeassistant_api": true,
   "host_network": true,
   "auth_api": true,
-  "gpio": true,
   "privileged": [
     "NET_ADMIN"
   ],
   "apparmor": false,
-  "map": [
-    "config:rw",
-  ],
   "schema": false
 }
