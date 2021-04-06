@@ -1,22 +1,28 @@
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:9.0.1
+# hadolint ignore=DL3006
+FROM ${BUILD_FROM}
 
-ARG BUILD_FROM
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-FROM $BUILD_FROM as build
-ARG BUILD_VERSION=latest
+# Setup base
+ARG BUILD_ARCH=amd64
+RUN \
+    if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
+    && if [ "${BUILD_ARCH}" = "armhf" ]; then ARCH="arm"; fi \
+    && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="arm"; fi \
+    && if [ "${BUILD_ARCH}" = "amd64" ]; then ARCH="amd64"; fi \
+    \
+    && curl -L -s \
+        "https://github.com/maxlyth/shelly-admin-express/releases/download/0.1.0/shelly-admin-0.1.0-linux-${ARCH}.tar.gz" \
+        | tar zxvf - -C /shelly-admin/
 
-RUN apk add --no-cache nodejs npm python3 make g++ linux-headers
-RUN npm install -g --unsafe-perm shelly-admin@$BUILD_VERSION
+RUN apk add --no-cache nodejs npm
+WORKDIR /room-assistant
 
-FROM $BUILD_FROM
-
-WORKDIR /shelly-admin
-ENV LANG C.UTF-8
-
-RUN apk add --no-cache nodejs npm \
-    && mkdir -p /shelly-admin/config \
-    && ln -s /usr/lib/node_modules/shelly-admin/bin/shelly-admin.js /usr/bin/shelly-admin
-
+# Copy root filesystem
 COPY rootfs /
-COPY --from=build /usr/lib/node_modules/shelly-admin /usr/lib/node_modules/shelly-admin
+RUN npm install
 
-CMD ["/shelly-admin/entrypoint.sh"]
+
+CMD ["/room-assistant/entrypoint.sh"]
