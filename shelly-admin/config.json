@@ -6,22 +6,32 @@
   "url": "https://github.com/maxlyth/shelly-admin-express",
   "advanced": true,
   "ingress": true,
-  "ingress_port": 4081,
+  "ingress_port": 3000,
   "startup": "services",
   "panel_icon": "mdi:docker",
   "homeassistant": "0.92.0b2",
-  "arch": ["aarch64", "amd64", "armhf", "armv7"],
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armhf",
+    "armv7"
+  ],
   "init": false,
   "map": [
-    "config:rw",
+    "config:rw"
   ],
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
-    "4081/tcp": 3000
+    "3000/tcp": 3000,
+    "5683/udp": 5683,
+    "5683/tcp": 5683
   },
   "ports_description": {
-    "4081/tcp": "Web interface"
+    "3000/tcp": "Web interface",
+    "5683/tcp": "CoAP",
+    "5683/udp": "CoAP"
   },
+  "webui": "http://[HOST]:[PORT:3000]/",
   "hassio_api": true,
   "hassio_role": "manager",
   "homeassistant_api": true,
