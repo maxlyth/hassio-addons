@@ -1,6 +1,6 @@
 {
   "name": "Shelly Admin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "slug": "shelly-admin",
   "description": "Admin console for Shelly IoT devices",
   "url": "https://github.com/maxlyth/shelly-admin-express",
@@ -25,8 +25,8 @@
   },
   "ports_description": {
     "3000/tcp": "Web interface",
-    "5684/tcp": "CoAP",
-    "5684/udp": "CoAP"
+    "5683/tcp": "CoAP",
+    "5683/udp": "CoAP"
   },
   "webui": "http://[HOST]:[PORT:3000]/",
   "apparmor": false,
