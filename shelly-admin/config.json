@@ -17,9 +17,6 @@
     "armv7"
   ],
   "init": false,
-  "map": [
-    "config:rw"
-  ],
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
     "3000/tcp": 3000,
@@ -32,14 +29,6 @@
     "5683/udp": "CoAP"
   },
   "webui": "http://[HOST]:[PORT:3000]/",
-  "hassio_api": true,
-  "hassio_role": "manager",
-  "homeassistant_api": true,
-  "host_network": true,
-  "auth_api": true,
-  "privileged": [
-    "NET_ADMIN"
-  ],
   "apparmor": false,
   "schema": false
 }
