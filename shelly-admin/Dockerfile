@@ -4,12 +4,17 @@ FROM ${BUILD_FROM}
 
 ENV LANG C.UTF-8
 
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Copy root filesystem
 COPY rootfs /
 WORKDIR /shelly-admin
 
-# Build arguments
+# Setup base system
 ARG BUILD_ARCH=amd64
+
+# Build arguments
 ARG BUILD_DATE
 ARG BUILD_DESCRIPTION
 ARG BUILD_NAME
