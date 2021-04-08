@@ -6,7 +6,7 @@ on:
       - 'shelly-admin/**'
       - '.github/workflows/shelly-admin-release.yml'
     branches:
-      - master
+      - main
 
 jobs:
   release:
