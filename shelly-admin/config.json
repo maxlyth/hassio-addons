@@ -20,8 +20,8 @@
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
     "3000/tcp": 3000,
-    "5683/udp": 5684,
-    "5683/tcp": 5684
+    "5684/udp": 5683,
+    "5684/tcp": 5683
   },
   "ports_description": {
     "3000/tcp": "Web interface",
