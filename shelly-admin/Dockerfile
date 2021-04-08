@@ -16,9 +16,8 @@ RUN \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="arm"; fi \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then ARCH="amd64"; fi \
     \
-    && curl -L -s \
-    "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/0.1.0.tar.gz" \
-    | tar zxvf - -C /shelly-admin/ --strip-components=1
+    && mkdir -p /shelly-admin \
+    && curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/0.1.0.tar.gz" | tar zxvf - -C /shelly-admin --strip-components=1
 
 WORKDIR /shelly-admin
 
