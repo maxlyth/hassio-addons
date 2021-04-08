@@ -9,6 +9,7 @@ RUN apk add --no-cache curl nodejs npm
 
 # Copy root filesystem
 COPY rootfs /
+ARG BUILD_VERSION=0.1.0
 
 RUN \
     if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
@@ -17,7 +18,7 @@ RUN \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then ARCH="amd64"; fi \
     \
     && mkdir -p /shelly-admin \
-    && curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/0.1.0.tar.gz" | tar zxvf - -C /shelly-admin --strip-components=1
+    && curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxvf - -C /shelly-admin --strip-components=1
 
 WORKDIR /shelly-admin
 

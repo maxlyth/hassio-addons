@@ -1,6 +1,6 @@
 {
   "name": "Shelly Admin",
-  "version": "dev",
+  "version": "0.1.1",
   "slug": "shelly-admin",
   "description": "Admin console for Shelly IoT devices",
   "url": "https://github.com/maxlyth/shelly-admin-express",
