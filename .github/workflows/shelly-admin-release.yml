@@ -11,7 +11,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
       - name: Login to DockerHub
@@ -23,6 +23,5 @@ jobs:
         uses: home-assistant/builder@2021.03.4
         with:
           args: |
-            --test \
             --all \
             --target /data/shelly-admin
