@@ -1,6 +1,6 @@
 {
   "name": "Shelly Admin",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "slug": "shelly-admin",
   "description": "Admin console for Shelly IoT devices",
   "url": "https://github.com/maxlyth/shelly-admin-express",
@@ -19,10 +19,10 @@
   "init": false,
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
-    "3000/tcp": 80
+    "43812/tcp": 80
   },
   "ports_description": {
-    "3000/tcp": "Web interface"
+    "43812/tcp": "Web interface"
   },
   "apparmor": false,
   "schema": false
