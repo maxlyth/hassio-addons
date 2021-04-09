@@ -19,7 +19,7 @@
   "init": false,
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
-    "43812/tcp": 80
+    "43812/tcp": 8031
   },
   "ports_description": {
     "43812/tcp": "Web interface"
