@@ -17,6 +17,7 @@
     "armv7"
   ],
   "init": false,
+  "host_network": true,
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
     "43812/tcp": 8031
@@ -24,6 +25,7 @@
   "ports_description": {
     "43812/tcp": "Web interface"
   },
+  "auth_api": true,
   "apparmor": false,
   "schema": false
 }
