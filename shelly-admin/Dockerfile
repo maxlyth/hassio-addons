@@ -7,10 +7,6 @@ ENV LANG C.UTF-8
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Copy root filesystem
-COPY rootfs /
-WORKDIR /shelly-admin
-
 # Setup base system
 ARG BUILD_ARCH=amd64
 
@@ -20,7 +16,7 @@ ARG BUILD_DESCRIPTION
 ARG BUILD_NAME
 ARG BUILD_REF
 ARG BUILD_REPOSITORY
-ARG BUILD_VERSION
+ARG BUILD_VERSION=latest
 
 RUN \
     apk add --no-cache \
@@ -28,7 +24,11 @@ RUN \
     nginx \
     patch \
     nodejs \
-    npm
+    npm \
+    \
+    && mkdir -p /shelly-admin
+
+WORKDIR /shelly-admin
 
 RUN \
     if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
@@ -36,9 +36,10 @@ RUN \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="arm"; fi \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then ARCH="amd64"; fi \
     \
-    && curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxvf - -C /shelly-admin --strip-components=1 \
-    \
-    && npm config set unsafe-perm true \
+    && curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxf - -C /shelly-admin --strip-components=1
+
+RUN \
+    npm config set unsafe-perm true \
     \
     && npm install \
     --no-audit \
@@ -52,6 +53,8 @@ RUN \
     /tmp/* \
     /etc/nginx
 
+# Copy root filesystem
+COPY rootfs /
 
 EXPOSE 5683/udp 5683/tcp 3000/tcp
 
