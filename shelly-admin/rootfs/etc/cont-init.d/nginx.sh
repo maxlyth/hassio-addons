@@ -14,7 +14,7 @@ port "^$(bashio::addon.ingress_port)" \
 -out /etc/nginx/servers/ingress.conf
 
 # Generate direct access configuration, if enabled.
-admin_port=$(bashio::addon.port 80)
+admin_port=$(bashio::addon.port 8031)
 if bashio::var.has_value "${admin_port}"; then
     bashio::config.require.ssl
     bashio::var.json \
