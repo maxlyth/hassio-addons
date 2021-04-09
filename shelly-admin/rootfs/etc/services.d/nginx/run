@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: Shelly-Admin
+# Runs the Nginx daemon
+# ==============================================================================
+
+# Wait for Shelly-Admin to become available
+bashio::net.wait_for 3000 localhost 300
+
+bashio::log.info "Starting NGinx..."
+exec nginx

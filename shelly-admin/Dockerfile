@@ -25,6 +25,8 @@ ARG BUILD_VERSION
 RUN \
     apk add --no-cache \
     curl \
+    nginx \
+    patch \
     nodejs \
     npm
 
@@ -45,15 +47,13 @@ RUN \
     --only=production \
     --unsafe-perm \
     \
-    && npm cache clear --force
+    && npm cache clear --force \
+    && rm -fr \
+    /tmp/* \
+    /etc/nginx
 
 
 EXPOSE 5683/udp 5683/tcp 3000/tcp
-
-# Copy data for add-on
-RUN chmod a+x /run.sh
-
-CMD [ "/run.sh" ]
 
 # Labels
 LABEL \

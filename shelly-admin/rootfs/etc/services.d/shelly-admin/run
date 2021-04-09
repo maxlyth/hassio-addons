@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant  Add-on: Shelly-Admin
+# Starts Shelly-Admin
+# ==============================================================================
+export NODE_PATH=/shelly-admin/node_modules
+
+cd /shelly-admin || bashio::exit.nok "Could not change directory to Shelly Admin"
+
+bashio::log.info "Starting Shelly Admin..."
+
+exec npm start -- "${options[@]}"
