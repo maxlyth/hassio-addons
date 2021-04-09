@@ -56,7 +56,7 @@ RUN \
 # Copy root filesystem
 COPY rootfs /
 
-EXPOSE 5683/udp 5683/tcp 3000/tcp
+EXPOSE 5683/udp 5683/tcp 43812/tcp
 
 # Labels
 LABEL \
