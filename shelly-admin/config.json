@@ -1,14 +1,15 @@
 {
   "name": "Shelly Admin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "slug": "shelly-admin",
   "description": "Admin console for Shelly IoT devices",
   "url": "https://github.com/maxlyth/shelly-admin-express",
+  "stage": "experimental",
   "advanced": true,
   "ingress": true,
   "ingress_port": 0,
-  "startup": "services",
-  "panel_icon": "mdi:docker",
+  "startup": "application",
+  "panel_icon": "mdi:puzzle",
   "homeassistant": "0.92.0b2",
   "arch": [
     "aarch64",
@@ -17,15 +18,34 @@
     "armv7"
   ],
   "init": false,
+  "hassio_api": true,
   "host_network": true,
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
-    "43812/tcp": 8031
+    "43812/tcp": 43812,
+    "5683/udp": 5683
   },
   "ports_description": {
-    "43812/tcp": "Web interface"
+    "43812/tcp": "Direct Web interface"
   },
+  "map": [
+    "config:rw",
+    "media:rw",
+    "share:rw",
+    "ssl"
+  ],
   "auth_api": true,
   "apparmor": false,
-  "schema": false
+  "options": {
+    "ssl": true,
+    "certfile": "fullchain.pem",
+    "keyfile": "privkey.pem",
+    "require_ssl": true
+  },
+  "schema": {
+    "ssl": "bool",
+    "certfile": "str",
+    "keyfile": "str",
+    "require_ssl": "bool"
+  }
 }
