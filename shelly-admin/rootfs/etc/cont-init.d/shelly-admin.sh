@@ -17,6 +17,6 @@ if bashio::config.true 'ssl'; then
     bashio::log.warning "Please remove the port assignment and allow Home Assistant"
     bashio::log.warning "to handle ingress."
     bashio::log.warning
-else
+    #else
     #    sed -i "s/%%SSL%%/false/" "/shelly-admin/bin/www"
 fi

@@ -22,16 +22,12 @@
   "host_network": true,
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
-    "43812/tcp": 43812,
-    "5683/udp": 5683
+    "43812/tcp": 43812
   },
   "ports_description": {
     "43812/tcp": "Direct Web interface"
   },
   "map": [
-    "config:rw",
-    "media:rw",
-    "share:rw",
     "ssl"
   ],
   "auth_api": true,
@@ -39,13 +35,11 @@
   "options": {
     "ssl": true,
     "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem",
-    "require_ssl": true
+    "keyfile": "privkey.pem"
   },
   "schema": {
     "ssl": "bool",
     "certfile": "str",
-    "keyfile": "str",
-    "require_ssl": "bool"
+    "keyfile": "str"
   }
 }
