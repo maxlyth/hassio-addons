@@ -22,7 +22,7 @@
   "host_network": true,
   "image": "maxlyth/shelly-admin-{arch}",
   "ports": {
-    "43812/tcp": 43812
+    "43812/tcp": null
   },
   "ports_description": {
     "43812/tcp": "Direct Web interface"

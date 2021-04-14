@@ -5,7 +5,8 @@
 # ==============================================================================
 
 # Wait for Shelly-Admin to become available
-bashio::net.wait_for 3000 localhost 300
+bashio::log.info "NginX is waiting for Shelly-Admin to start..."
+bashio::net.wait_for 43812 localhost 300
 
-bashio::log.info "Starting NGinx..."
+bashio::log.info "Starting NginX..."
 exec nginx
