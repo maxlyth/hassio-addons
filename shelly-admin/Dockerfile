@@ -41,7 +41,6 @@ RUN \
     --only=production \
     --unsafe-perm \
     \
-    && npm cache clear \
     && rm -fr /tmp/*
 
 # Copy root filesystem
