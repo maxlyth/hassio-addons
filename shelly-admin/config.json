@@ -15,7 +15,8 @@
     "aarch64",
     "amd64",
     "armhf",
-    "armv7"
+    "armv7",
+    "i386"
   ],
   "init": true,
   "host_network": true,

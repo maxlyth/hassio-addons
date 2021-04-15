@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:9.1.7
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:stable
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -29,17 +29,10 @@ RUN \
 WORKDIR /shelly-admin
 
 RUN \
-    if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
-    && if [ "${BUILD_ARCH}" = "armhf" ]; then ARCH="arm"; fi \
-    && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="arm"; fi \
-    && if [ "${BUILD_ARCH}" = "amd64" ]; then ARCH="amd64"; fi \
-    \
-    && npm config set unsafe-perm true \
-    \
-    && npm install --save express express-sse html-entities pug compression cookie-parser cors morgan lodash dotenv helmet shellies
+    curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxf - -C /shelly-admin --strip-components=1
 
 RUN \
-    curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxf - -C /shelly-admin --strip-components=1 \
+    npm config set unsafe-perm true \
     \
     && npm install \
     --no-audit \
@@ -48,7 +41,7 @@ RUN \
     --only=production \
     --unsafe-perm \
     \
-    && npm cache clear --force \
+    && npm cache clear \
     && rm -fr /tmp/*
 
 # Copy root filesystem
