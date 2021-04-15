@@ -21,8 +21,6 @@ ARG BUILD_VERSION=latest
 RUN \
     apk add --no-cache \
     curl \
-    nginx \
-    patch \
     nodejs \
     npm \
     \
@@ -49,14 +47,14 @@ RUN \
     --unsafe-perm \
     \
     && npm cache clear --force \
-    && rm -fr \
-    /tmp/* \
-    /etc/nginx
+    && rm -fr /tmp/*
 
 # Copy root filesystem
 COPY rootfs /
 
 EXPOSE 5683/udp 5683/tcp 43812/tcp
+
+CMD [ "run.sh" ]
 
 # Labels
 LABEL \
