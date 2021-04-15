@@ -4,13 +4,28 @@
 # Starts Shelly-Admin
 # ==============================================================================
 declare port
-# Pass in port & SSL settings
+declare host
+declare prefix
+
+# Pass in port & host settings
+bashio::log.info $(bashio::addon.ingress_port)
+bashio::log.info $(bashio::addon.ingress_url)
+bashio::log.info $(bashio::addon.ip_address)
+bashio::log.info $(bashio::addon.network)
+
 port=$(bashio::addon.ingress_port)
-sed -i "s/43812/${port}/" "/shelly-admin/bin/www"
+host="127.0.0.1"
+prefix=""
 
 export NODE_PATH=/shelly-admin/node_modules
 
 cd /shelly-admin || bashio::exit.nok "Could not change directory to Shelly Admin"
 
+cat >.env <<EOL
+HOST=${host}
+PORT=${port}
+PREFIX=${prefix}
+EOL
+
 bashio::log.info "Starting Shelly-Admin..."
-exec npm start ${port}
+exec npm start
