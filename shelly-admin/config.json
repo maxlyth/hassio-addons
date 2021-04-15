@@ -21,25 +21,25 @@
   "hassio_api": true,
   "host_network": true,
   "image": "maxlyth/shelly-admin-{arch}",
-  "ports": {
-    "43812/tcp": null
-  },
-  "ports_description": {
-    "43812/tcp": "Direct Web interface"
-  },
-  "map": [
-    "ssl"
-  ],
+  //  "ports": {
+  //    "43813/tcp": null
+  //  },
+  //  "ports_description": {
+  //    "43813/tcp": "Direct Web interface"
+  //  },
+  //  "map": [
+  //    "ssl"
+  //  ],
   "auth_api": true,
-  "apparmor": false,
-  "options": {
-    "ssl": true,
-    "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem"
-  },
-  "schema": {
-    "ssl": "bool",
-    "certfile": "str",
-    "keyfile": "str"
-  }
+  "apparmor": false
+  //  "options": {
+  //    "ssl": true,
+  //    "certfile": "fullchain.pem",
+  //    "keyfile": "privkey.pem"
+  //  },
+  //  "schema": {
+  //    "ssl": "bool",
+  //    "certfile": "str",
+  //    "keyfile": "str"
+  //  }
 }
