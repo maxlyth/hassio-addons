@@ -7,7 +7,7 @@ declare port
 declare host
 declare prefix
 
-# Pass in port & host settings
+# Pass in port, host and URL settings
 bashio::log.info $(bashio::addon.ingress_port)
 bashio::log.info $(bashio::addon.ingress_url)
 bashio::log.info $(bashio::addon.ip_address)
