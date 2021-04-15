@@ -14,7 +14,7 @@ bashio::log.info $(bashio::addon.ip_address)
 bashio::log.info $(bashio::addon.network)
 
 port=$(bashio::addon.ingress_port)
-host="127.0.0.1"
+host="0.0.0.0"
 prefix=""
 
 export NODE_PATH=/shelly-admin/node_modules
