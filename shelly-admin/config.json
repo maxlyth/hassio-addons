@@ -1,6 +1,6 @@
 {
   "name": "Shelly Admin",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "slug": "shelly-admin",
   "description": "Admin console for Shelly IoT devices",
   "url": "https://github.com/maxlyth/shelly-admin-express",
@@ -18,7 +18,6 @@
     "armv7"
   ],
   "init": true,
-  "hassio_api": true,
   "host_network": true,
   "image": "maxlyth/shelly-admin-{arch}"
 }
