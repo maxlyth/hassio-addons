@@ -34,10 +34,12 @@ RUN \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="arm"; fi \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then ARCH="amd64"; fi \
     \
-    && curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxf - -C /shelly-admin --strip-components=1
+    && npm config set unsafe-perm true \
+    \
+    && npm install --save express express-sse html-entities pug compression cookie-parser cors morgan lodash dotenv helmet shellies
 
 RUN \
-    npm config set unsafe-perm true \
+    curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxf - -C /shelly-admin --strip-components=1 \
     \
     && npm install \
     --no-audit \
