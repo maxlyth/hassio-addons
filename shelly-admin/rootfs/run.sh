@@ -25,6 +25,8 @@ cat >.env <<EOL
 HOST=${host}
 PORT=${port}
 PREFIX=${prefix}
+TRUSTPROXY=loopback, 172.30.32.1
+UIMODE=light
 EOL
 
 bashio::log.info "Starting Shelly-Admin..."
