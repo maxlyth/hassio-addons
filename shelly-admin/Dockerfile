@@ -29,7 +29,7 @@ RUN \
 WORKDIR /shelly-admin
 
 RUN \
-    curl -L -s "https://github.com/maxlyth/shelly-admin-express/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxf - -C /shelly-admin --strip-components=1
+    curl -L -s "https://github.com/maxlyth/shelly-admin/archive/refs/tags/${BUILD_VERSION}.tar.gz" | tar zxf - -C /shelly-admin --strip-components=1
 
 RUN \
     npm config set unsafe-perm true \
