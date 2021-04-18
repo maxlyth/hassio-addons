@@ -4,7 +4,9 @@
 
 Handles discovery and communication with [Shelly](https://shelly.cloud) devices using [CoAP](http://coap.technology) over HTTP.
 
-An administration console written to manage a whole network of Shellys and to enure that their configuration is homogenous. The user interface is entirely HTML5 and built upon Bootstrap 4 and Pug (née Jade) page templates. The design is fully responsive and reconfigures its layout dynamically so it is usuable even on a mobile device.
+An administration console written to manage a whole network of Shellys and to enure that their configuration is homogenous.
+
+The user interface is entirely HTML5 and built upon Bootstrap 4 and Pug (née Jade) page templates. The design is fully responsive and reconfigures its layout dynamically so it is usuable even on a mobile device.
 ![Early Shelly Admin UI Preview](https://github.com/maxlyth/hassio-addons/raw/main/shelly-admin/images/shelly-admin-ha-screenshot.png)
 The applications, by design, does not work with or rely on Shelly Cloud. Device discovery is currently implemented via CoAP thanks to the awesome work of [Alexander Rydén](https://github.com/alexryd) for his contribution to the [Shellies](https://github.com/alexryd/node-shellies) NPM project. I fully intend to add MQTT discovery soon after the inital CoAP based release. I may also add IP range scanning if there is demand.
 
@@ -12,6 +14,20 @@ The user interface is designed to be dynamic and will automatically update in re
 
 Not only does the Add-on discover all your devices on the local network, it also allows you to update the firmware with a single click or open the device configuration page without messy tabs or navigation. The Add-on includes a reverse proxy so you can directly access the Shelly UI of each device even if you are not on the same network. This means if you have remote access to Home Assistant (eg via Nabu Casa) then you can also remotely access your Shelly devices.
 ![Early Shelly Admin UI Preview](https://github.com/maxlyth/hassio-addons/raw/main/shelly-admin/images/shelly-admin-ha-edit.png)
+
+## Installation
+
+The installation of this add-on is pretty straightforward and not different in comparison to installing any other Home Assistant add-on.
+
+1. Navigate to Supervisor in side bar
+2. Select Add-on Store tab
+3. Click triple dot menu in top right and select Repositories
+4. Paste 'https://github.com/maxlyth/hassio-addons' and click Add
+5. Click Shelly Admin Add-On
+6. Click Install
+7. Ready to go!
+
+## Known Limitations
 
 This is prerelease software and is not yet feature complete. For ease of development this project is packaged as a NodeJS web server driving an HTML5 web browser (Safari, Chrome, Firefox, Edge etc). The stand-alone Electron versions to deliver native binaries on MacOS and Windows will follow closer to functional completion.
 
