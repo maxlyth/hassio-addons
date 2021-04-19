@@ -10,7 +10,7 @@
   "ingress_port": 0,
   "apparmor": true,
   "startup": "application",
-  "panel_icon": "mdi:puzzle",
+  "panel_icon": "mdi:alpha-s-circle",
   "homeassistant": "0.92.0b2",
   "arch": [
     "aarch64",
