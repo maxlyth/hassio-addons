@@ -23,17 +23,11 @@
   "host_network": true,
   "image": "maxlyth/shelly-admin-{arch}",
   "options": {
-    "dark_mode": false,
-    "shelly_auth": {
-      "username": "",
-      "password": ""
-    }
+    "shelly_username": "",
+    "shelly_password": ""
   },
   "schema": {
-    "dark_mode": "bool",
-    "shelly_auth": {
-      "username": "str",
-      "password": "password"
-    }
+    "shelly_username": "str",
+    "shelly_password": "password"
   }
 }
