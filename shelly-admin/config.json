@@ -21,13 +21,5 @@
   ],
   "init": true,
   "host_network": true,
-  "image": "maxlyth/shelly-admin-{arch}",
-  "options": {
-    "shelly_username": "",
-    "shelly_password": ""
-  },
-  "schema": {
-    "shelly_username": "str",
-    "shelly_password": "password"
-  }
+  "image": "maxlyth/shelly-admin-{arch}"
 }
