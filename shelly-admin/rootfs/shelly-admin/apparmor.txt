@@ -1,0 +1,59 @@
+#include <tunables/global>
+
+profile ADDON_SLUG flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+
+  # Capabilities
+  file,
+  signal,
+
+  # S6-Overlay
+  /init rix,
+  /bin/** ix,
+  /usr/bin/** ix,
+  /etc/s6/** rix,
+  /run/s6/** rwix,
+  /etc/services.d/** rwix,
+  /etc/cont-init.d/** rwix,
+  /etc/cont-finish.d/** rwix,
+  /run/** rwk,
+
+  # Bashio
+  /usr/lib/bashio/** ix,
+  /tmp/** rw,
+
+  # Access to Options.json and other files within your addon
+  /shelly-admin/** rw,
+
+  # Start new profile for service
+  /run.sh cx,
+
+  profile /run.sh flags=(attach_disconnected,mediate_deleted) {
+    #include <abstractions/base>
+
+    # Receive signals from S6-Overlay
+    signal receive,
+    # Access network
+    network,
+    # Read DNS resolver parameters
+    /run/systemd/resolve/stub-resolv.conf r,
+    # Read procfs
+    /proc/** r,
+    # Read OS configuration
+    /etc/** r,
+    # Execute OS binaries
+    /bin/** ix,
+    /usr/bin/** ix,
+    # Work with npm
+    /root/*/.npm/** rwl,
+    /root/*/.npmrc rw,
+    # Work with tmp files
+    /tmp/ rw,
+    /tmp/** rw,
+    # Do anything with projects
+    /shelly-admin/** rwixlkm,
+    # Work with module configuration stored in user directory
+    /root/*/.config/configstore/ rw,
+    /root/*/.config/configstore/** rw
+  }
+}
